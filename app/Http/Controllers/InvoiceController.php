@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class invoiceController extends Controller
@@ -13,7 +14,8 @@ class invoiceController extends Controller
      */
     public function index()
     {
-        return view('admin.create_invoice');
+        // $products = Products::all();
+        return view('admin.invoice');
     }
 
 
@@ -41,6 +43,10 @@ class invoiceController extends Controller
         //
     }
 
+    public function create()
+    {
+        return view('admin.create_invoice');
+    }
     /**
      * Remove the specified resource from storage.
      *

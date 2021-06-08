@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\invoiceController;
+use App\Http\Controllers\RecommendedItem;
+use App\Http\Controllers\RecommendedList;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::resource('invoice', invoiceController::class);
+Route::resource('invoice', InvoiceController::class);
 Route::get('create_product', 'App\Http\Controllers\ProductController@create');
 Route::post('product/store', 'App\Http\Controllers\ProductController@store')->name('product.store');
-
+Route::get('recommended/lists, App\Http\Controllers\RecommendedList@index')->name('recommended.lists');
+Route::post('recommended/items, App\Http\Controllers\RecommendedItem@index')->name('recommended.items');
 
 Route::get('/', function () {
     return view('admin.invoice');
