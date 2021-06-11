@@ -14,7 +14,7 @@ class RecommendedItem extends Controller
      */
     public function index(Products $product, Request $request)
     {
-        dd($product);
+        dd($request);
     }
 
 }

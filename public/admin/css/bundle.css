@@ -63,3 +63,7 @@ table thead {
   color: lightgrey;
   font-size: 0.7rem;
 }
+
+#price {
+  cursor: not-allowed;
+}

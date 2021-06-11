@@ -17,10 +17,10 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::resource('invoice', InvoiceController::class);
-Route::get('create_product', 'App\Http\Controllers\ProductController@create');
+Route::get('create_product', 'App\Http\Controllers\ProductController@create')->name('product.create');
 Route::post('product/store', 'App\Http\Controllers\ProductController@store')->name('product.store');
-Route::get('recommended/lists, App\Http\Controllers\RecommendedList@index')->name('recommended.lists');
-Route::post('recommended/items, App\Http\Controllers\RecommendedItem@index')->name('recommended.items');
+Route::get('recommended/lists', 'App\Http\Controllers\RecommendedList@index')->name('recommended.lists');
+Route::post('recommended/items', 'App\Http\Controllers\RecommendedItem@index')->name('recommended.items');
 
 Route::get('/', function () {
     return view('admin.invoice');

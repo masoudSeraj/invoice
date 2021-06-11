@@ -14,10 +14,8 @@ class RecommendedList extends Controller
      */
     public function index()
     {
-        $randProducts = Products::inRandomOrder()->get();
-        $products = Products::all();
-        return view('admin.autocomplete',[
-            'products' => $products
-        ]);
+        $randProducts = Products::inRandomOrder()->limit(2)->get();
+        // $products = Products::all();
+        return  response()->json(['randProducts' => $randProducts]);
     }
 }

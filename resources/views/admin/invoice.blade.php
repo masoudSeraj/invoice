@@ -2,7 +2,8 @@
 
 @section('content')
 <section>
-    <a href="{{  route('invoice.create')   }}">create new invoice</a>
+    <a href="{{  route('invoice.create')   }}">create new invoice</a><br>
+    <a href="{{  route('product.create')   }}">create new product</a>
     <div class="d-flex justify-content-between">
         <div class="d-flex box box-border">
             <h3>name:</h3>
