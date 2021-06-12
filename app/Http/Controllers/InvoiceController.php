@@ -30,15 +30,13 @@ class invoiceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd( $request->input('qty'), $request->input('price'));
 
+        dd($request);
         for($i=0; $i<count($request->input('qty')); $i++){
             $result[] = $request->input('qty')[$i] * $request->input('price')[$i];
         }
         $length = $request->input('length');
-        // dd($request->input('product_id'));
 
-        // $request->input('qty')->implode(',');
         try{
             $invoice = Invoices::create([
                 'subtotal' =>  array_sum($result),
@@ -46,16 +44,10 @@ class invoiceController extends Controller
                 'length'   =>  $length
           ]);
         //   dd($invoice);
-        //   $invoice=Invoices::latest()->limit(1)->get();
-          foreach($request->input('product_id') as $product_id){
-            $product=Products::where('id', $product_id)->get();
-            //   dd($invoice, $product);
-            dd($product);
-            // $quantity = $request->input('qty');
-            //   dd($quantity);
-            // $invoice->products()->attach($product->id);
-            //   $invoice->products()->attach($quantity[0]);
-          }
+            $invoice=Invoices::latest()->limit(1)->get();
+            $products=$request->input('product_id');
+
+            $invoice->products()->attach([2,3,4]);
 
         }
         catch(\Exception $e){

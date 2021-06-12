@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Invoices;
 use App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
