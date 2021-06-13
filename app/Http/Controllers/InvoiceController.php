@@ -31,7 +31,7 @@ class invoiceController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+        // dd($request);
         for($i=0; $i<count($request->input('qty')); $i++){
             $result[] = $request->input('qty')[$i] * $request->input('price')[$i];
         }
@@ -43,11 +43,11 @@ class invoiceController extends Controller
                 'total'    =>  array_sum($result)*0.4 + array_sum($result),
                 'length'   =>  $length
           ]);
-        //   dd($invoice);
-            $invoice=Invoices::latest()->limit(1)->get();
-            $products=$request->input('product_id');
 
-            $invoice->products()->attach([2,3,4]);
+            foreach($request->input('qty') as $qty)
+            {
+                $invoice->products()->attach($request->input('product_id'), ['quantity' => $qty]);
+            }
 
         }
         catch(\Exception $e){
