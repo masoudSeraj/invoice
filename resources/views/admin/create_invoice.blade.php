@@ -16,7 +16,7 @@
                     </label>
                     <div class="d-flex inputs-parent justify-content-between">
                         <label for="search">search</label>
-                        <input type="text" class="form-control search" name="search-recommended[]" style='border-radius: 0px; text-align: right;' id="search" data-productnumber=1 placeholder="جستجو">
+                        <input type="text" class="form-control search" name="search-recommended" style='border-radius: 0px; text-align: right;' id="search" data-productnumber=1 placeholder="جستجو">
                         <div class="plus" style="margin-left: 10px; cursor: pointer">&plus;</div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
     document.querySelector('.plus').addEventListener('click', e =>{
         let input = document.createElement('input');
         input.classList.add('form-control', 'search');
-        input.setAttribute('name', 'search-recommended[]');
+        input.setAttribute('name', 'search-recommended');
         input.setAttribute('placeholder', 'جستجو');
         input.setAttribute('data-productnumber', i++);
         document.querySelector('.inputs-parent').appendChild(input);

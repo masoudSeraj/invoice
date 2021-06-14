@@ -30,7 +30,7 @@ class invoiceController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd(phpinfo());
         // dd($request);
         for($i=0; $i<count($request->input('qty')); $i++){
             $result[] = $request->input('qty')[$i] * $request->input('price')[$i];
@@ -43,12 +43,16 @@ class invoiceController extends Controller
                 'total'    =>  array_sum($result)*0.4 + array_sum($result),
                 'length'   =>  $length
           ]);
-
+          foreach($request->input('product_id') as $product_id)
+          {
             foreach($request->input('qty') as $qty)
             {
-                $invoice->products()->attach($request->input('product_id'), ['quantity' => $qty]);
+                $arr = ['quantity' => $qty];
+                $invoice->products()->attach($product_id, $arr);
+                unset($arr);
+                break;
             }
-
+          }
         }
         catch(\Exception $e){
             return $e->getMessage();
